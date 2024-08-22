@@ -60,7 +60,16 @@ def to_command(ctx, input_file):
 
 
 # load plug-ins from entry_points
-for ep in entry_points().get("pfb.plugins", []):
+eps = entry_points()
+
+if hasattr(eps, 'select'):
+    # For Python 3.10 and newer
+    plugins = eps.select(group="pfb.plugins")
+else:
+    # For older versions of Python
+    plugins = eps.get("pfb.plugins", [])
+
+for ep in plugins:
     ep.load()
 
 if __name__ == "__main__":
