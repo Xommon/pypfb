@@ -1,0 +1,12 @@
+{
+  "resources": [
+    {
+      "name": "combined_records",
+      "type": "table",
+      "path": "combined_records.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv"
+    }
+  ]
+}
